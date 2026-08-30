@@ -1,15 +1,17 @@
 
 import {  Routes, Route } from "react-router";
-import './App.css'
+import { GlobalStyle } from "./GlobalStyles";
 import { Home } from "./pages/Home";
 
 function App() {
 
 
   return (
+  <>  
+  <GlobalStyle />
      <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+        <Route path="/" element={<Home />} />
+      </Routes></>
   )
 }
 
