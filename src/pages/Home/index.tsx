@@ -9,7 +9,7 @@ import { HeaderComponent } from '../../components/HeaderComponent';
 
 export function Home(){
     const [activeMenu, setActiveMenu] = useState<string>('Vendas');
-    
+
     return( 
     <LayoutContainer>
     <SidebarComponent
@@ -19,10 +19,12 @@ export function Home(){
 
       <HeaderComponent title={activeMenu} />
 
-      <Content>
-        <h2>Conteúdo Principal</h2>
-        <p>Aqui você insere as telas, tabelas ou formulários da sua aplicação.</p>
-      </Content>
+     <Content>
+          {/* Aqui chamaremos as telas de Vendas, Clientes e Produtos */}
+          {activeMenu === 'Vendas' && <div>Tela de Vendas</div>}
+          {activeMenu === 'Clientes' && <div>Tela de Clientes</div>}
+          {activeMenu === 'Produtos' && <div>Tela de Produtos</div>}
+        </Content>
     </LayoutContainer>
     )
 }

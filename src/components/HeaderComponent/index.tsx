@@ -14,9 +14,7 @@ export function HeaderComponent({
 
   return (
     <HeaderContainer>
-      <HeaderTitle>{title}</HeaderTitle>
-
-    
+      <HeaderTitle>{title}</HeaderTitle>    
     </HeaderContainer>
   );
 }
