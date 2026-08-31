@@ -12,6 +12,18 @@ export interface CreateProductData {
 export interface Client {
   clientId: number;
   name: string;
+  cpf: string;
+  birthDate?: string;
+  email?: string;
+  telefone?: string;
+}
+
+export interface CreateClientDTO {
+  name: string;
+  cpf: string;
+  birthDate?: string;
+  email?: string;
+  telefone?: string;
 }
 
 export interface SaleItem {
