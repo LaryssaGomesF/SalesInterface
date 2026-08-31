@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useState, useEffect, type ReactNode, useContext } from 'react';
 import { api } from '../services/api';
 import {type Product, type CreateProductData, type Client, type Sale } from '../types/sales';
 
@@ -109,3 +109,5 @@ export function SalesProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const useSales = () => useContext(SalesContext);

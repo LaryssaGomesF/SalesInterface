@@ -10,10 +10,20 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`Erro na requisição: ${response.statusText}`);
+    let errorMessage = `Erro na requisição: ${response.statusText}`;
+
+    try {
+      const errorData = (await response.json()) as { message?: string };
+      if (errorData.message) {
+        errorMessage = errorData.message;
+      }
+    } catch {
+      // Se a resposta da API não for um JSON válido, mantemos a mensagem padrão do statusText
+    }
+
+    throw new Error(errorMessage);
   }
 
-  // Tratamento para respostas sem corpo (204 No Content)
   if (response.status === 204) {
     return {} as T;
   }

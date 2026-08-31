@@ -6,6 +6,7 @@ import {
   Content
 } from './styles';
 import { HeaderComponent } from '../../components/HeaderComponent';
+import { Products } from '../../components/Products';
 
 export function Home(){
     const [activeMenu, setActiveMenu] = useState<string>('Vendas');
@@ -23,7 +24,7 @@ export function Home(){
           {/* Aqui chamaremos as telas de Vendas, Clientes e Produtos */}
           {activeMenu === 'Vendas' && <div>Tela de Vendas</div>}
           {activeMenu === 'Clientes' && <div>Tela de Clientes</div>}
-          {activeMenu === 'Produtos' && <div>Tela de Produtos</div>}
+          {activeMenu === 'Produtos' && <Products />}
         </Content>
     </LayoutContainer>
     )
