@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, type ReactNode, useContext } from 'react';
 import { api } from '../services/api';
-import {type Product, type CreateProductData, type Client, type Sale } from '../types/sales';
+import {type Product, type CreateProductData, type Client, type Sale, type CreateSaleDTO } from '../types/sales';
 
 interface SalesContextData {
   products: Product[];
@@ -15,6 +15,7 @@ interface SalesContextData {
   sales: Sale[];
   loadingSales: boolean;
   getSales: () => Promise<void>;
+  createSale: (data: CreateSaleDTO) => Promise<void>;
 }
 
 const SalesContext = createContext<SalesContextData>({} as SalesContextData);
@@ -78,6 +79,16 @@ export function SalesProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const createSale = async (saleData: CreateSaleDTO) => {
+    try {
+      await api.post('/Sale', saleData);
+      await getSales();
+    } catch (error) {
+      console.error('Erro ao cadastrar venda:', error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       getProducts();
@@ -102,6 +113,7 @@ export function SalesProvider({ children }: { children: ReactNode }) {
         sales,
         loadingSales,
         getSales,
+        createSale
       }}
     >
       {children}

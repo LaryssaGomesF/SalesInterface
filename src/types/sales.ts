@@ -26,19 +26,30 @@ export interface CreateClientDTO {
   telefone?: string;
 }
 
-export interface SaleItem {
+export interface SaleItemRequest {
+  productId: number;
+  quantity: number;
+}
+
+export interface CreateSaleDTO {
+  clientId: number;
+  saleDate: string;
+  items: { productId: number; quantity: number }[];
+}
+
+export interface SaleItemResponse {
   saleItemId: number;
   productId: number;
-  productName: string;
   quantity: number;
   unitPrice: number;
+  productName: string;
 }
 
 export interface Sale {
   saleId: number;
   clientId: number;
-  clientName: string;
   saleDate: string;
   priceTotal: number;
-  items: SaleItem[];
+  clientName: string;
+  items: SaleItemResponse[];
 }
