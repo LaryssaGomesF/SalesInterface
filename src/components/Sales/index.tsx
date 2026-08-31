@@ -301,7 +301,7 @@ export function Sales() {
             Formulário
         ===================================== */}
 
-        <Grid >
+        <Grid  size={{ xs: 12, md: 5 }}>
           <Card elevation={3}>
             <CardContent>
               <Typography
